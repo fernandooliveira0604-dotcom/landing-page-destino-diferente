@@ -1,14 +1,13 @@
 // ============================================================
 // tracking.js — Meta Pixel
 // Pixel ID: 1246179545938164
-// Eventos: PageView, AddToCart, InitiateCheckout
 // ============================================================
 
 (function () {
 
   var PIXEL_ID = '1246179545938164';
 
-  // 1) Carrega o Meta Pixel
+  // Carrega o Meta Pixel
   !function(f,b,e,v,n,t,s){
     if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -20,48 +19,38 @@
 
   fbq('init', PIXEL_ID);
 
-  // 2) PageView — dispara quando a página carrega
+  // PageView ao carregar
   fbq('track', 'PageView');
 
-  // 3) AddToCart + InitiateCheckout — dispara ao clicar nos botões de compra
   function attachEvents() {
-    // Seleciona todos os botões de compra
-    var buttons = document.querySelectorAll(
-      'a[href*="hotmart"], .btn-primary, .fab-btn, .urgency-btn'
-    );
 
-    buttons.forEach(function (btn) {
-      if (btn.dataset.pixelAttached) return;
-      btn.dataset.pixelAttached = 'true';
+    // ── Botões do Hotmart (InitiateCheckout + AddToCart) ──────
+    // Apenas os 2 botões que levam direto ao checkout
+    var hotmartButtons = document.querySelectorAll('a[href*="pay.hotmart"]');
+
+    hotmartButtons.forEach(function (btn) {
+      if (btn.dataset.pixelCheckout) return;
+      btn.dataset.pixelCheckout = 'true';
 
       btn.addEventListener('click', function () {
-        // Detecta qual produto pelo href ou texto do botão
-        var href = btn.getAttribute('href') || '';
-        var text = (btn.innerText || btn.textContent || '').toUpperCase();
-        var isCombo = href.indexOf('I106554872V') !== -1 || text.indexOf('COMBO') !== -1;
-
-        var productName  = isCombo ? 'Combo Flórida Inteligente' : 'Orlando Inteligente';
-        var productValue = isCombo ? 67.90 : 24.90;
-        var productId    = isCombo ? 'combo-florida-inteligente' : 'orlando-inteligente';
+        var href    = btn.getAttribute('href') || '';
+        var isCombo = href.indexOf('I106554872V') !== -1;
 
         var eventData = {
-          content_name: productName,
-          content_ids:  [productId],
+          content_name: isCombo ? 'Combo Flórida Inteligente' : 'Orlando Inteligente',
+          content_ids:  [isCombo ? 'combo-florida-inteligente' : 'orlando-inteligente'],
           content_type: 'product',
           currency:     'BRL',
-          value:        productValue,
+          value:        isCombo ? 67.90 : 24.90,
         };
 
-        // AddToCart
         fbq('track', 'AddToCart', eventData);
-
-        // InitiateCheckout — dispara imediatamente antes do redirecionamento
         fbq('track', 'InitiateCheckout', eventData);
       });
     });
+
   }
 
-  // Aguarda o DOM estar pronto
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', attachEvents);
   } else {
