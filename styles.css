@@ -1824,7 +1824,9 @@ h1, h2, h3, h4 {
 /* ===== JUST TRAVEL — BÔNUS EXCLUSIVO ===== */
 .just-travel-section {
   padding: 5rem 0;
-  background: linear-gradient(160deg, #051525 0%, #0a2040 50%, #051525 100%);
+  background: linear-gradient(160deg, #020c18 0%, #071830 50%, #020c18 100%);
+  border-top: 2px solid rgba(201,168,76,.2);
+  border-bottom: 2px solid rgba(201,168,76,.2);
 }
 
 .jt-wrapper {
@@ -1843,13 +1845,14 @@ h1, h2, h3, h4 {
   background: linear-gradient(90deg, var(--gold), var(--gold-light));
   color: var(--blue);
   font-family: 'Montserrat', sans-serif;
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .16em;
+  font-size: .88rem;
+  font-weight: 900;
+  letter-spacing: .18em;
   text-transform: uppercase;
-  padding: .35rem 1.2rem;
+  padding: .5rem 1.6rem;
   border-radius: 50px;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
+  box-shadow: 0 4px 20px rgba(201,168,76,.45);
 }
 
 .jt-title {
@@ -1945,9 +1948,9 @@ h1, h2, h3, h4 {
 
 /* Story: foto única centralizada, sem grid abaixo */
 .story-photo-single .story-photo {
-  height: 400px;
+  height: 380px;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center center;
 }
 
 /* About: layout centralizado (1 coluna) */
@@ -1967,9 +1970,9 @@ h1, h2, h3, h4 {
   border-radius: var(--radius-lg);
 }
 .about-photo-center .about-photo {
-  height: 360px;
+  height: 420px;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 10%;
 }
 .about-text-center {
   text-align: center;
@@ -2000,18 +2003,25 @@ h1, h2, h3, h4 {
 .item-no { opacity: .45; }
 
 .check-red {
-  color: #f87171;
+  color: #ef4444;
   font-weight: 900;
-  font-size: .9rem;
+  font-size: 1rem;
+  filter: drop-shadow(0 0 4px rgba(239,68,68,.5));
+}
+.check-gold {
+  color: #22c55e !important;
+  font-weight: 900;
+  font-size: 1rem;
+  filter: drop-shadow(0 0 4px rgba(34,197,94,.4));
 }
 
 .item-highlight {
-  background: rgba(201,168,76,.08);
+  background: rgba(34,197,94,.08);
   border-radius: 6px;
   padding: .4rem .5rem !important;
   margin-top: .3rem;
-  border: 1px solid rgba(201,168,76,.2) !important;
-  border-bottom: 1px solid rgba(201,168,76,.2) !important;
+  border: 1px solid rgba(34,197,94,.25) !important;
+  border-bottom: 1px solid rgba(34,197,94,.25) !important;
   opacity: 1 !important;
 }
 
