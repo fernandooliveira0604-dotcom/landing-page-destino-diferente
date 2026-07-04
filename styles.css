@@ -1940,3 +1940,93 @@ h1, h2, h3, h4 {
   .jt-cards { grid-template-columns: repeat(2, 1fr); }
   .jt-commitment { flex-direction: column; gap: .6rem; }
 }
+
+/* ===== AJUSTES — story foto única, about centralizado, pricing comparativo ===== */
+
+/* Story: foto única centralizada, sem grid abaixo */
+.story-photo-single .story-photo {
+  height: 400px;
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+/* About: layout centralizado (1 coluna) */
+.about-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.about-photo-center {
+  width: 100%;
+  max-width: 420px;
+}
+.about-photo-center .about-photo-frame {
+  border-radius: var(--radius-lg);
+}
+.about-photo-center .about-photo {
+  height: 360px;
+  object-fit: cover;
+  object-position: center 20%;
+}
+.about-text-center {
+  text-align: center;
+  width: 100%;
+}
+.about-text-center .about-values {
+  justify-content: center;
+}
+.about-text-center .btn-outline-gold {
+  margin-top: 1.2rem;
+}
+
+/* Pricing: grid igual para os 2 cards */
+.pricing-grid-equal {
+  grid-template-columns: 1fr 1fr;
+  max-width: 860px;
+}
+
+/* Lista comparativa */
+.plan-includes-compare li {
+  font-size: .82rem;
+  padding: .3rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.plan-includes-compare li:last-child { border-bottom: none; }
+
+.item-no span,
+.item-no { opacity: .45; }
+
+.check-red {
+  color: #f87171;
+  font-weight: 900;
+  font-size: .9rem;
+}
+
+.item-highlight {
+  background: rgba(201,168,76,.08);
+  border-radius: 6px;
+  padding: .4rem .5rem !important;
+  margin-top: .3rem;
+  border: 1px solid rgba(201,168,76,.2) !important;
+  border-bottom: 1px solid rgba(201,168,76,.2) !important;
+  opacity: 1 !important;
+}
+
+/* Parks grid: 3 cols com object-position top para não cortar rostos */
+.parks-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+.park-photo-card img {
+  object-position: center 15%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pricing-grid-equal { grid-template-columns: 1fr; }
+  .story-photo-single .story-photo { height: 300px; }
+  .about-photo-center .about-photo { height: 280px; }
+  .parks-grid { grid-template-columns: repeat(2, 1fr); }
+}
