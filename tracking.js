@@ -41,7 +41,7 @@
           content_ids:  [isCombo ? 'combo-florida-inteligente' : 'orlando-inteligente'],
           content_type: 'product',
           currency:     'BRL',
-          value:        isCombo ? 67.90 : 24.90,
+          value:        isCombo ? 67.90 : 24.90
         };
 
         fbq('track', 'AddToCart', eventData);
